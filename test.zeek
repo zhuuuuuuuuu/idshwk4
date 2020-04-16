@@ -19,7 +19,7 @@ event zeek_init()
 event http_reply(c: connection,version:string,code:count,reason:string)
 {
   SumStats::observe("all_response.lookup",[$num=count]);//统计all_response
-  if(reason == "404")//统计所有404的
+  if(reason == "404")
   {
     SumStats::observe("404.lookup",[$host=c$id$orig_h],[$str=reason]);
     }
