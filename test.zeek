@@ -7,12 +7,11 @@ event zeek_init()
                     $reducer=set(r1,r2),
                     $ephoch_result(ts:time,key:SumStats::Key,result: SumStats::Result)  =
 					{
-							 local r3=result["404.lookup"];
+						local r3=result["404.lookup"];
     						local r4=result["all_response.lookup"];
     						if(r3$num>2 && (r3$num/r4$num)>0.2 && (r3$unique/r3$num)>0.5)
     						{   
-    							 print fmt("%s is a scanner with %d scan attempts on %d urls", 
-    							 key$host,r3$num,r3$unique);
+    							 print fmt("%s is a scanner with %d scan attempts on %d urls",key$host,r3$num,r3$unique);
     						 }
 					 }]);
   
