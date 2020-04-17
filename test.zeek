@@ -28,8 +28,4 @@ event http_reply(c: connection,version:string,code:count,reason:string)
     }
   }
 
-function HTTP::build_url_http(rec: HTTP::Info):string
-{
-  local url: string;
-  return url;
-}
+
