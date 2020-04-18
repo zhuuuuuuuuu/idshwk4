@@ -9,7 +9,7 @@ event zeek_init()
 					          {
 					                	local r3=result["404.lookup"];
     						            local r4=result["all_response.lookup"];
-    						            if(r3$num>2 && (r3$num*100/r4$num)> 20 && (r3$unique*100/r3$num)> 50 )
+    						            if(r3$num>2 && (r3$num/r4$num)>0.2 && (r3$unique/r3$num)> 0.5 )
     						            {   
     							              print fmt("%s is a scanner with %d scan attempts on %d urls",key$host,r3$num,r3$unique);
     						             }
