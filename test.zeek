@@ -6,7 +6,7 @@ event zeek_init()
   SumStats::create([$name="scan.lookup",
                     $epoch=10mins,
                     $reducers=set(r1,r2),
-                    $ephoch_result(ts:time, key:SumStats::Key, result: SumStats::Result)  =
+                    $epoch_result(ts:time, key:SumStats::Key, result: SumStats::Result)  =
 					          {
 					                	local r3 = result["404.lookup"];
     						            local r4 = result["all_response.lookup"];
