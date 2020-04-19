@@ -2,7 +2,7 @@
 event zeek_init()
 {
   local r1=SumStats::Reducer($stream="404_lookup",$apply=set(SumStats::UNIQUE));
-  local r2=SumStats::Reducer($stream="all_response.lookup",$apply=set(SumStats::UNIQUE));
+  local r2=SumStats::Reducer($stream="all_response_lookup",$apply=set(SumStats::UNIQUE));
   SumStats::create([$name="scan_lookup",
                     $epoch=10mins,
                     $reducers=set(r1,r2),
@@ -21,7 +21,7 @@ event zeek_init()
   
 event http_reply(c: connection,version:string,code:count,reason:string)
 {
-  SumStats::observe("all_response.lookup",[$host=c$id$orig_h],[$str=c$http$uri]);
+  SumStats::observe("all_response_lookup",[$host=c$id$orig_h],[$str=c$http$uri]);
   if(code == 404)
    {
     SumStats::observe("404_lookup",[$host=c$id$orig_h],[$str=c$http$uri]);
