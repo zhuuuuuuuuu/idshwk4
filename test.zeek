@@ -1,3 +1,4 @@
+@load base/frameworks/sumstats
 event zeek_init()
 {
   local r1=SumStats::Reducer($stream="404.lookup",$apply=set(SumStats::SUM,SumStats::UNIQUE));
